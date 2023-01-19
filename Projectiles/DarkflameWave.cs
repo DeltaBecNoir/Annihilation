@@ -16,8 +16,8 @@ namespace Annihilation.Projectiles
     {
         public override void SetDefaults()
         {
-            Projectile.width = 8;
-            Projectile.height = 18;
+            Projectile.width = 26;
+            Projectile.height = 26;
             Projectile.damage = 16;
             Projectile.friendly = true;
             Projectile.hostile = false;

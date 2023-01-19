@@ -21,8 +21,8 @@ namespace Annihilation.Items.Melee
 		{
 			Item.damage = 17;
 			Item.DamageType = DamageClass.Melee;
-			Item.width = 40;
-			Item.height = 34;
+			Item.width = 50;
+			Item.height = 44;
 			Item.useTime = 25;
 			Item.useAnimation = 25;
 			Item.useStyle = ItemUseStyleID.Swing;
