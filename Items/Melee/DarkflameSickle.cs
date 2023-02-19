@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.Creative;
+using Terraria.GameContent;
 
 namespace Annihilation.Items.Melee
 {
@@ -33,6 +34,19 @@ namespace Annihilation.Items.Melee
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<DarkflameWave>();
 			Item.shootSpeed = 30f;
+		}
+		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+		{
+			var drawPos = Item.Center - Main.screenPosition;
+			var origTexture = TextureAssets.Item[Item.type].Value;
+			var texture = ModContent.Request<Texture2D>("Annihilation/Items/Melee/DarkflameSickle_Glow").Value;
+			var orig = texture.Size() / 2f;
+			Rectangle frame;
+			frame = texture.Frame();
+
+			spriteBatch.Draw(origTexture, drawPos, frame, lightColor, rotation, orig, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(texture, drawPos, frame, Color.White, rotation, orig, scale, SpriteEffects.None, 0f);
+			return false;
 		}
 	}
 }
