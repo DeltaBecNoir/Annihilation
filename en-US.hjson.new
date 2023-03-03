@@ -1,0 +1,47 @@
+
+Mods: {
+	Annihilation: {
+		Items: {
+			CrystiumSword: {
+				DisplayName: Crystium Sword
+				Tooltip: Swings create a blast of crystals
+			}
+
+			DarkflameSickle: {
+				DisplayName: Darkflame Sickle
+				Tooltip: Cut enemies with flaming waves
+			}
+
+			CrystalSpiker: {
+				DisplayName: Crystal Spiker
+				Tooltip: Fires a Spike that sticks to tiles and Shatters into Smaller Crystals
+			}
+
+			CrystiumBow: {
+				DisplayName: Crystium Bow
+				Tooltip: Shoots a barage of Crystal Spikes every 5th shot
+			}
+
+			CrystiumHamaxe: {
+				DisplayName: Crystium Hamaxe
+				Tooltip: "'It's heavy'"
+			}
+
+			CrystiumPickaxe: {
+				DisplayName: Crystium Pickaxe
+				Tooltip: Can mine meteorite
+			}
+		}
+
+		NPCs.Kulvectus.DisplayName: Kulvectus, Fallen Omen
+
+		Projectiles: {
+			CrystalArrow.DisplayName: Crystal Spike
+			CrystalBullet.DisplayName: Crystal Spike
+			CrystalBulletShard.DisplayName: Crystal Shard
+			CrystalBulletStuck.DisplayName: Crystal Bullet Stuck
+			DarkflameWave.DisplayName: Darkflame Wave
+			SwordCrystal.DisplayName: Crystal Spike
+		}
+	}
+}
