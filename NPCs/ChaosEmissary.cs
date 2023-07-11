@@ -15,10 +15,12 @@ namespace Annihilation.NPCs
     public class ChaosEmissary : ModNPC
     {
         private const float moveSpeed = 3f;
-        private const int attackInterval = 120; // in ticks
+        private const float attackInterval = 3f; // in seconds
         private int attackTimer = 0;
         private float maxDistanceToPlayer = 800f;
-        private float shootSpeed = 5;
+        private float attackDistance = 50f;
+        private float shootSpeed = 5f;
+        private float dashSpeed = 6f;
 
         private float distanceToPlayer;
 
@@ -144,7 +146,7 @@ namespace Annihilation.NPCs
                 NPC.spriteDirection = direction;
             }
             // move to the other side after shooting
-            else if (attackTimer > attackInterval / 2 && NPC.velocity.X == 0)
+            else if (attackTimer > (attackInterval * 60) / 2 && NPC.velocity.X == 0)
             {
                 NPC.velocity.X = moveSpeed * -direction * 0.5f;
                 NPC.spriteDirection = -direction;
@@ -160,18 +162,23 @@ namespace Annihilation.NPCs
         private void Attack()
         {
             attackTimer++;
-            if (attackTimer >= attackInterval)
+            if (attackTimer >= (attackInterval * 60))
             {
-                if (Main.player[NPC.target].dead || distanceToPlayer > maxDistanceToPlayer)
+                if (Main.player[NPC.target].dead || distanceToPlayer > attackDistance)
                 {
                     return;
                 }
 
-                // perform attack
                 SoundEngine.PlaySound(SoundID.Item45, NPC.Center);
 
                 Player player = Main.player[NPC.target];
-                Vector2 direction = player.Center - NPC.Center;
+                Vector2 directionToPlayer = player.Center - NPC.Center;
+
+                directionToPlayer.Normalize();
+                // pointed towards the player
+                NPC.velocity = directionToPlayer * dashSpeed;
+
+                Vector2 direction = NPC.velocity;
                 direction.Normalize();
 
                 Vector2 projectileVelocity = direction * shootSpeed;
@@ -181,6 +188,9 @@ namespace Annihilation.NPCs
                 projectile.friendly = false;
                 projectile.hostile = true;
                 projectile.damage = NPC.damage;
+
+                // set projectile rotation to match NPC's rotation
+                projectile.rotation = projectileVelocity.ToRotation();
 
                 attackTimer = 0;
             }
