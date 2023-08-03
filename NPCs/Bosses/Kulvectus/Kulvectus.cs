@@ -15,7 +15,7 @@ namespace Annihilation.NPCs.Bosses.Kulvectus
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kulvectus, Fallen Omen");
+            // DisplayName.SetDefault("Kulvectus, Fallen Omen");
             Main.npcFrameCount[NPC.type] = 8;
         }
         public override void SetDefaults()

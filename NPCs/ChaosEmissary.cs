@@ -26,7 +26,7 @@ namespace Annihilation.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Emissary");
+            // DisplayName.SetDefault("Chaos Emissary");
             Main.npcFrameCount[NPC.type] = 3;
         }
 
@@ -93,7 +93,7 @@ namespace Annihilation.NPCs
             }
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
             {
@@ -196,7 +196,7 @@ namespace Annihilation.NPCs
             }
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(BuffID.OnFire, 150);
         }

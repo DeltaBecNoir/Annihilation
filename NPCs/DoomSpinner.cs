@@ -15,7 +15,7 @@ namespace Annihilation.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doom Spinner");
+            // DisplayName.SetDefault("Doom Spinner");
         }
 
         public override void SetDefaults()
@@ -61,7 +61,7 @@ namespace Annihilation.NPCs
             }
             return 0;
         }
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
             {
@@ -154,7 +154,7 @@ namespace Annihilation.NPCs
             dust.noGravity = true;
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(BuffID.OnFire, 150);
         }

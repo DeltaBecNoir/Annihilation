@@ -12,7 +12,7 @@ namespace Annihilation.NPCs.Forest
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Occulta Lurker");
+			// DisplayName.SetDefault("Occulta Lurker");
 			Main.npcFrameCount[NPC.type] = 5;
 		}
 

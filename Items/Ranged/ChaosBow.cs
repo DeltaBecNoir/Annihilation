@@ -15,8 +15,8 @@ namespace Annihilation.Items.Ranged
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaos Bow");
-			Tooltip.SetDefault("BOGABOGA");
+			// DisplayName.SetDefault("Chaos Bow");
+			// Tooltip.SetDefault("BOGABOGA");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		public override void SetDefaults()

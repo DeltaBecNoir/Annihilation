@@ -13,8 +13,8 @@ namespace Annihilation.Items.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darkflame Sickle");
-			Tooltip.SetDefault("Cut enemies with flaming waves");
+			// DisplayName.SetDefault("Darkflame Sickle");
+			// Tooltip.SetDefault("Cut enemies with flaming waves");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 

@@ -11,8 +11,8 @@ namespace Annihilation.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Fragment");
-            Tooltip.SetDefault("The fragments of a Chaotic Entity");
+            // DisplayName.SetDefault("Chaos Fragment");
+            // Tooltip.SetDefault("The fragments of a Chaotic Entity");
         }
         public override void SetDefaults()
         {

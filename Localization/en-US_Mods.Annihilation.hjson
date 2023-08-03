@@ -1,0 +1,34 @@
+Items: {
+	FleshyBait: {
+		DisplayName: Fleshy Bait
+		Tooltip: ""
+	}
+
+	ChaosFragment: {
+		DisplayName: Chaos Fragment
+		Tooltip: ""
+	}
+
+	DarkflameSickle: {
+		DisplayName: Darkflame Sickle
+		Tooltip: ""
+	}
+
+	ChaosBow: {
+		DisplayName: Chaos Bow
+		Tooltip: ""
+	}
+}
+
+NPCs: {
+	Kulvectus.DisplayName: Kulvectus
+	ChaosEmissary.DisplayName: Chaos Emissary
+	DoomSpinner.DisplayName: Doom Spinner
+	OccultaLurker.DisplayName: Occulta Lurker
+	ExampleNPC.DisplayName: Example N P C
+}
+
+Projectiles: {
+	ChaosArrow.DisplayName: Chaos Arrow
+	DarkflameWave.DisplayName: Darkflame Wave
+}
