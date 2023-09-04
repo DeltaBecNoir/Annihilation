@@ -28,12 +28,15 @@ namespace Annihilation.Items.BossSummons
             Item.noUseGraphic = true;
             Item.consumable = true;
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime && !NPC.AnyNPCs(ModContent.NPCType<Kulvectus>());
+        }
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             // Spawn Kulvectus near the player
-            int npcType = Mod.Find<ModNPC>("Kulvectus").Type;
-            NPC.SpawnOnPlayer(player.whoAmI, npcType);
+            int npcType = ModContent.NPCType<Kulvectus>();
+            NPC.NewNPC(null, (int)player.Center.X - (96 / 2), (int)player.Center.Y - (136 / 2) - 540, npcType);
             SoundEngine.PlaySound(SoundID.Roar, player.position);
             return true;
         }

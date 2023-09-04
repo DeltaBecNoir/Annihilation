@@ -44,10 +44,11 @@ namespace Annihilation.NPCs.Bosses.Kulvectus
             });
         }
         private bool init = true;
-        private bool init2 = true;
+        private int init2 = 0;
+        private int init3 = 0;
         public override void AI()
         {
-            if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
+            if (NPC.target > 0 || NPC.target != 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
             {
                 NPC.TargetClosest();
             }
@@ -55,25 +56,52 @@ namespace Annihilation.NPCs.Bosses.Kulvectus
             if (!init && Main.dayTime)
             {
                 NPC.velocity.X = 0f;
-                NPC.velocity.Y -= 0.2f;
+                NPC.velocity.Y -= 0.1f;
             }
             if (init)
             {
-                if (init2)
+                if (init2 == 0)
                 {
-                    NPC.position = new Vector2(player.Center.X + (NPC.width / 2), player.Center.Y + (NPC.height / 2) - 320);
-                    init2 = false;
+                    NPC.position = new Vector2(player.Center.X - (NPC.width / 2), player.Center.Y - (NPC.height / 2) - 420);
+                    init2 = 1;
                 }
-                else if (NPC.Center.Y <= player.Center.Y - 180)
+                else if (player.Center.Y > NPC.Center.Y + 180 && init2 == 1)
                 {
                     NPC.velocity.X = 0f;
-                    NPC.velocity.Y += 0.2f;
+                    NPC.velocity.Y += 0.1f;
                 }
                 else
                 {
-                    //scream roar with high knockback and no damage
+                    init2 = 2;
+                    NPC.velocity.X = 0f;
+                    NPC.velocity.Y = 0f;
+                    if (init3 == 0)
+                    {
+                        SoundEngine.PlaySound(new("Annihilation/Sounds/Custom/KulvectusRoar") { Volume = 3f }, NPC.Center);
+                    }
+                    init3++;
+                    if (player.Center.X > NPC.Center.X && NPC.Distance(player.Center) <= 200f)
+                    {
+                        player.velocity.X += NPC.Distance(player.Center) / 300f;
+                    }
+                    if (player.Center.X < NPC.Center.X && NPC.Distance(player.Center) <= 200f)
+                    {
+                        player.velocity.X -= NPC.Distance(player.Center) / 300f;
+                    }
+                    if (player.Center.Y > NPC.Center.Y && NPC.Distance(player.Center) <= 200f)
+                    {
+                        player.velocity.Y += NPC.Distance(player.Center) / 300f;
+                    }
+                    if (player.Center.Y < NPC.Center.Y && NPC.Distance(player.Center) <= 200f)
+                    {
+                        player.velocity.Y -= NPC.Distance(player.Center) / 300f;
+                    }
+                    if (init3 >= 300)
+                    {
+                        init = false;
+                        init3 = 300;
+                    }
                 }
-                init = false;
             }
         }
     }
