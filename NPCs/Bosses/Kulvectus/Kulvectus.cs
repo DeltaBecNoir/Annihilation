@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.GameContent.Bestiary;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.Audio;
 
 namespace Annihilation.NPCs.Bosses.Kulvectus
 {
